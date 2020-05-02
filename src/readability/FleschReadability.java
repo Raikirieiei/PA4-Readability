@@ -1,13 +1,19 @@
 package readability;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class FleschReadability {
 
-    public static double IndexCalculator(String source){
-        double words = ReadAndCount.Read(source)[0];
-        double syllables = ReadAndCount.Read(source)[1];
-        double sentences = ReadAndCount.Read(source)[2];
-        double readabilityIndex = 206.835 - 84.6*(syllables/words) - 1.015*(words/sentences);
-        return readabilityIndex;
+    public static  double IndexCalculator(String source){
+        ReadAndCount.Read(source);
+        double words = ReadAndCount.getWord();
+        double syllables = ReadAndCount.getSyl();
+        double sentences = ReadAndCount.getSent();
+        double readabilityIndex = (206.835 - 84.6*(syllables/words) - 1.015*(words/sentences));
+        BigDecimal bd = new BigDecimal(readabilityIndex).setScale(2, RoundingMode.HALF_UP);
+        double result = bd.doubleValue();
+        return result;
     }
 
     public static String GradeCalculator(double index){

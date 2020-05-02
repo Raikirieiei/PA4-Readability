@@ -11,44 +11,37 @@ public class ReadAndCount {
     private static int countSent;
     private static String line;
 
-    public static int[] Read(String... source) {
-        int[] countArray = new int[] { countWord, countSyl, countSent };
-        for (String eachFile : source) {
-            if (eachFile.contains("/")) {
-                try {
-                    url = new URL(eachFile);
-                } catch (Exception e) {
+    public static void Read(String source) {
+        if (source.contains("/")) {
+            try {
+                url = new URL(source);
+            } catch (Exception e) {
+            }
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
+                while ((line = br.readLine()) != null) {
+                    CountWordMethod();
+                    CountSylMethod();
+                    CountSentenceMethod();
                 }
-                try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
-                    while ((line = br.readLine()) != null) {
-                        CountWordMethod();
-                        CountSylMethod();
-                        CountSentenceMethod();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            File file = new File(source);
+            if (!file.exists() || !file.isFile())
+                error(source + " does not exist or is not a regular file.");
+            if (!file.canRead())
+                error(source + " is not readable");
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                while ((line = br.readLine()) != null) {
+                    CountWordMethod();
+                    CountSylMethod();
+                    CountSentenceMethod();
                 }
-            } else {
-                File file = new File(eachFile);
-                if (!file.exists() || !file.isFile())
-                    error(source + " does not exist or is not a regular file.");
-                if (!file.canRead())
-                    error(source + " is not readable");
-                try (BufferedReader br = new BufferedReader(new FileReader(eachFile))) {
-                    while ((line = br.readLine()) != null) {
-                        CountWordMethod();
-                        CountSylMethod();
-                        CountSentenceMethod();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        System.out.println(countWord);
-        System.out.println(countSyl);
-        System.out.println(countSent);
-        return countArray;
     }
 
     public static void CountWordMethod() {
@@ -143,6 +136,24 @@ public class ReadAndCount {
                 return true;
         }
         return false;
+    }
+
+    public static int getWord() {
+        return ReadAndCount.countWord;
+    }
+
+    public static int getSyl() {
+        return ReadAndCount.countSyl;
+    }
+
+    public static int getSent() {
+        return ReadAndCount.countSent;
+    }
+
+    public static void ClearCount() {
+        ReadAndCount.countSent = 0;
+        ReadAndCount.countWord = 0;
+        ReadAndCount.countSyl = 0;
     }
 
     /**

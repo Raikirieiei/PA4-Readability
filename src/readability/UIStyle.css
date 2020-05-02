@@ -1,0 +1,10 @@
+.root{
+    -fx-background: rgb(223, 219, 220);
+    -fx-font-family: "Agency FB";
+    -fx-font-size: 16px;
+}
+
+#instructtext{
+    -fx-font-family: "Agency FB";
+    -fx-font-size: 21px;
+}
