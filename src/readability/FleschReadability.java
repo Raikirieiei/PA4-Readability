@@ -3,19 +3,33 @@ package readability;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+/**
+ * This is a class to count index and calculate Flesch Readability.
+ * @author Thornthep Chomchuen
+ */
 public class FleschReadability {
 
-    public static  double IndexCalculator(String source){
+    /**
+     * this method callculate Flesch Readability Index and will use to determine readability later.
+     * @param source file or url to read.
+     * @return return the result of index calculated by formula.
+     */
+    public static double IndexCalculator(String source){
         ReadAndCount.Read(source);
         double words = ReadAndCount.getWord();
         double syllables = ReadAndCount.getSyl();
         double sentences = ReadAndCount.getSent();
-        double readabilityIndex = (206.835 - 84.6*(syllables/words) - 1.015*(words/sentences));
+        double readabilityIndex = (206.835 - 84.6*(syllables/words) - 1.015*(words/sentences)); // Formula to count index
         BigDecimal bd = new BigDecimal(readabilityIndex).setScale(2, RoundingMode.HALF_UP);
         double result = bd.doubleValue();
         return result;
     }
 
+    /**
+     * this method determine how hard to read the text.
+     * @param index calculated readability index.
+     * @return readability from the file or url.
+     */
     public static String GradeCalculator(double index){
         if (index > 100)    return "4th grade student (elementary school) ";
         else if (90 <= index && index <= 100) return "5th grade student";

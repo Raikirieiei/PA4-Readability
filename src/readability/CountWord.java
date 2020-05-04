@@ -1,5 +1,9 @@
 package readability;
 
+/**
+ * This is a class that implements CountStrategy interface to count words.
+ * @author Thornthep Chomchuen
+ */
 public class CountWord implements CountStrategy{
 
     @Override
@@ -9,8 +13,8 @@ public class CountWord implements CountStrategy{
         boolean isVowel = false;
         int count = 0;
         try {
-            for (String word : ReadAndCount.getLine().split("\\s+")) {
-                for (char alpha : word.toCharArray()) {
+            for(String word : ReadAndCount.getLine().split("\\s+")) {
+                for(char alpha : word.toCharArray()) {
                     if (IsVowel(String.valueOf(alpha)))
                         isVowel = true;
                     else    isConsonant = true;
@@ -27,6 +31,11 @@ public class CountWord implements CountStrategy{
         return count;
     }
     
+    /**
+     * method to check alphabet (Vowel,Consonant).
+     * @param alphabet alphabet to check vowel.
+     * @return True if alphabet is vowel and False if alphabet is consonant.
+     */
     private static boolean IsVowel(String alphabet) {
         if (alphabet.equalsIgnoreCase("a") || alphabet.equalsIgnoreCase("e") || alphabet.equalsIgnoreCase("i")
                 || alphabet.equalsIgnoreCase("o") || alphabet.equalsIgnoreCase("u")) return true;

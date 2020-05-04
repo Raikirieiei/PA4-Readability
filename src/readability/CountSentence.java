@@ -1,7 +1,10 @@
 package readability;
 
-
-public class CountSentence implements CountStrategy{
+/**
+ * this is a class that implement CountStrategy interface to calculate sentences.
+ * @author Thornthep Chomchuen
+ */
+public class CountSentence implements CountStrategy {
 
     @Override
     public int count() {

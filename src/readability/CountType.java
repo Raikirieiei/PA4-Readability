@@ -1,14 +1,20 @@
 package readability;
 
+/**
+ * this class is use to call a counting Strategy.
+ * @author Thornthep Chomchuen
+ */
 public class CountType {
     
     private CountStrategy strategy;
 
-    public CountType(CountStrategy strategy){
+    // constructor
+    public CountType(CountStrategy strategy) {
         this.strategy = strategy;
     }
-
-    public int Counting(){  
+    
+    // call to counting the strategy you choose.
+    public int Counting() {  
         return strategy.count();
      }  
 }
