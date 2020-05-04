@@ -1,5 +1,5 @@
 .root{
-    -fx-background: rgb(223, 219, 220);
+    -fx-background: rgb(187, 183, 183);
     -fx-font-family: "Agency FB";
     -fx-font-size: 16px;
 }
@@ -7,4 +7,33 @@
 #instructtext{
     -fx-font-family: "Agency FB";
     -fx-font-size: 21px;
+}
+
+#filefield{
+    -fx-border-color: white;
+}
+
+#show{
+    -fx-border-color: white;
+}
+
+#exitbutton{
+    -fx-background-color: rgb(0, 0, 0);
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+#exitbutton:pressed{
+    -fx-background-color: rgb(252, 69, 69);
+}
+
+#browse:pressed{
+    -fx-background-color: rgb(57, 168, 196);
+}
+
+#calculate:pressed{
+    -fx-background-color: rgb(57, 168, 196);
+}
+
+#clear:pressed{
+    -fx-background-color: rgb(57, 168, 196);
 }
