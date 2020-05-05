@@ -9,73 +9,65 @@ import java.net.URL;
  */
 public class ReadAndCount {
     //this is the url attribute that use to receive url and read
-    private static URL url;
+    private URL url;
     // this is attribute to receive counted words from file or URL.
-    private static int countWord;
+    private int countWord;
     // this is attribute to receive counted syllables from file or URL.
-    private static int countSyl;
+    private int countSyllable;
     // this is attribute to receive counted sentences from file or URL.
-    private static int countSent;
+    private int countSentence;
     // this is attribute to receive each line from file or URL.
-    private static String line;
-    
+    private String line;
+    // this is attribute to call ui class.
+    private GraphicalUI ui = new GraphicalUI();
+
     // these are attribute to use the counting strategy from interface.
-    
-    private static CountType cw = new CountType(new CountWord());
-    private static CountType cs = new CountType(new CountSentence());
-    private static CountType csl = new CountType(new CountSyllable());
+
+    private static CountType countWordStrat = new CountType(new CountWord());
+    private static CountType countSentenceStrat = new CountType(new CountSentence());
+    private static CountType countSyllableStrat = new CountType(new CountSyllable());
 
     /**
      * method to read a file or URL and counting, then send information of counting to count attribute.
      * @param source file or URL.
      */
-    public static void Read(String source) {
+    public void Read(String source) {
         if (source.contains("/")) {
             try {
                 url = new URL(source);
             } catch (Exception e) {}
             try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
-                while((line = br.readLine()) != null) {
-                    countWord += cw.Counting();
-                    countSyl += csl.Counting();
-                    countSent += cs.Counting();
+                while((line = br.readLine()) != null && !line.isEmpty()) {
+                    countWord += countWordStrat.Counting(line);
+                    countSyllable += countSyllableStrat.Counting(line);
+                    countSentence += countSentenceStrat.Counting(line);
                 }
-            } catch (IOException e) {e.printStackTrace();}
+            } catch (IOException e) {
+                ui.PopupError("File not found");
+            }
+            
         } else {
             File file = new File(source);
             if (!file.exists() || !file.isFile())
-                GraphicalUI.error("File does not exist or is not a regular file.");
+                ui.error("File does not exist or is not a regular file.");
             if (!file.canRead())
-                GraphicalUI.error("File is not readable");
+                ui.error("File is not readable");
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 while((line = br.readLine()) != null) {
-                    countWord += cw.Counting();
-                    countSyl += csl.Counting();
-                    countSent += cs.Counting();
+                    countWord += countWordStrat.Counting(line);
+                    countSyllable += countSyllableStrat.Counting(line);
+                    countSentence += countSentenceStrat.Counting(line);
                 }
-            } catch (IOException e) {}
-        
+            } catch (IOException e) {ui.PopupError("File not found");}
         }
     }
 
     // accessor method for attribute countWord.
-    public static int getWord() {return ReadAndCount.countWord;}
+    public int getWord() {return this.countWord;}
 
     // accessor method for attribute countSyl.
-    public static int getSyl() {return ReadAndCount.countSyl;}
+    public int getSyllable() {return this.countSyllable;}
 
     // accessor method for attribute countSent.
-    public static int getSent() {return ReadAndCount.countSent;}
-
-    // accessor method for attribute line.
-    public static String getLine() {return ReadAndCount.line;}
-
-    /**
-     * a method to clear all the count.
-     */
-    public static void ClearCount() {
-        ReadAndCount.countSent = 0;
-        ReadAndCount.countWord = 0;
-        ReadAndCount.countSyl = 0;
-    }
+    public int getSentence() {return this.countSentence;}
 }

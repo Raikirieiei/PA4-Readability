@@ -14,7 +14,7 @@ public class CountType {
     }
     
     // call to counting the strategy you choose.
-    public int Counting() {  
-        return strategy.count();
+    public int Counting(String line) {  
+        return strategy.count(line);
      }  
 }

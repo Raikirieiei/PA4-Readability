@@ -7,9 +7,9 @@ package readability;
 public class CountSentence implements CountStrategy {
 
     @Override
-    public int count() {
+    public int count(String line) {
         int count = 0;
-        for (String word : ReadAndCount.getLine().split("\\s+")) {
+        for (String word : line.split("\\s+")) {
             try {
                 char end = word.toCharArray()[word.length() - 1];
                 if (String.valueOf(end).matches("[./,?]")) count++;
@@ -17,6 +17,4 @@ public class CountSentence implements CountStrategy {
         }
         return count;
     }
-
-    
 }

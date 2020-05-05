@@ -7,27 +7,24 @@ package readability;
 public class CountWord implements CountStrategy{
 
     @Override
-    public int count() {
+    public int count(String line) {
         boolean isWord = true;
         boolean isConsonant = false;
         boolean isVowel = false;
         int count = 0;
-        try {
-            for(String word : ReadAndCount.getLine().split("\\s+")) {
-                for(char alpha : word.toCharArray()) {
-                    if (IsVowel(String.valueOf(alpha)))
-                        isVowel = true;
-                    else    isConsonant = true;
-                }
-                if (isConsonant && isVowel) isWord = true;
-                if (!word.isBlank() && !word.matches("[\\p{Punct}&&[^@',&]]") && isWord)    count++;
-                if (word.equalsIgnoreCase("I")) count++;
-                isConsonant = false;
-                isVowel = false;
-                isWord = false;
+        for(String word : line.split("\\s+")) {
+            for(char alpha : word.toCharArray()) {
+                if (IsVowel(String.valueOf(alpha)))
+                    isVowel = true;
+                else    isConsonant = true;
             }
-            
-        } catch (Exception e) { }
+            if (isConsonant && isVowel) isWord = true;
+            if (!word.isBlank() && !word.matches("[\\p{Punct}&&[^@',&]]") && isWord)    count++;
+            if (word.equalsIgnoreCase("I")) count++;
+            isConsonant = false;
+            isVowel = false;
+            isWord = false;
+        }
         return count;
     }
     
@@ -36,7 +33,7 @@ public class CountWord implements CountStrategy{
      * @param alphabet alphabet to check vowel.
      * @return True if alphabet is vowel and False if alphabet is consonant.
      */
-    private static boolean IsVowel(String alphabet) {
+    private boolean IsVowel(String alphabet) {
         if (alphabet.equalsIgnoreCase("a") || alphabet.equalsIgnoreCase("e") || alphabet.equalsIgnoreCase("i")
                 || alphabet.equalsIgnoreCase("o") || alphabet.equalsIgnoreCase("u")) return true;
         else return false;

@@ -10,6 +10,6 @@ public interface CountStrategy {
      * method for counting word, syllable or sentence.
      * @return result.
      */
-    public int count();
+    public int count(String line);
     
 }

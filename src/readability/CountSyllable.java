@@ -7,9 +7,9 @@ package readability;
 public class CountSyllable implements CountStrategy {
 
     @Override
-    public int count() {
-        int count = 0;
-        for(String word : ReadAndCount.getLine().split("\\s+")) {
+    public int count(String line) {
+        int count = 0; 
+        for(String word : line.split("\\s+")) {
             char[] alphabet1 = word.toCharArray();
             if (!word.isBlank()) {
                 if (IsVowel(String.valueOf(alphabet1[0])))  count++;
@@ -43,7 +43,7 @@ public class CountSyllable implements CountStrategy {
      * @param alphabet alphabet to check vowel.
      * @return True if alphabet is vowel and False if alphabet is consonant.
      */
-    private static boolean IsVowel(String alphabet) {
+    private boolean IsVowel(String alphabet) {
         if (alphabet.equalsIgnoreCase("a") || alphabet.equalsIgnoreCase("e") || alphabet.equalsIgnoreCase("i")
                 || alphabet.equalsIgnoreCase("o") || alphabet.equalsIgnoreCase("u")) return true;
         else return false;
@@ -55,7 +55,7 @@ public class CountSyllable implements CountStrategy {
      * @param str the alphabet to check
      * @return true if contain only e , False if not.
      */
-    private static boolean OnlyE(String str) {
+    private boolean OnlyE(String str) {
         String lowercaseStr = str.toLowerCase();
         if (lowercaseStr.contains("e")) {
             if (lowercaseStr.contains("a") || lowercaseStr.contains("i") || lowercaseStr.contains("o") 

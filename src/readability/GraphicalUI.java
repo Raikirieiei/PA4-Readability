@@ -141,14 +141,16 @@ public class GraphicalUI extends Application {
      * @param event
      */
     private void CalculateHandler(ActionEvent event) {
+        FleschReadability flesch = new FleschReadability();
         try {
+            ReadAndCount read = new ReadAndCount();
             showResult.clear();
             showResult.setStyle("-fx-border-color: blue;");
             fileField.setStyle("-fx-border-color: blue");
-            String readability = FleschReadability.GradeCalculator(FleschReadability.IndexCalculator(fileField.getText()));
-            showResult.setText(PrintResult(fileField.getText(), ReadAndCount.getSyl(), ReadAndCount.getWord(),
-                    ReadAndCount.getSent(), FleschReadability.IndexCalculator(fileField.getText()), readability));
-            ReadAndCount.ClearCount();
+            read.Read(fileField.getText());
+            String readability = flesch.GradeCalculator(flesch.IndexCalculator(fileField.getText()));
+            showResult.setText(PrintResult(fileField.getText(), read.getSyllable(), read.getWord(),
+                    read.getSentence(), flesch.IndexCalculator(fileField.getText()), readability));
         } catch (Exception e) {
             fileField.clear();
             fileField.setPromptText("Please select a file");
@@ -202,24 +204,34 @@ public class GraphicalUI extends Application {
             + "Syllables :      " + syl + "\n" 
             + "Words :          " + word + "\n"
             + "Sentences :    " + sent + "\n" 
-            + "Flesch Index : " + index + "\n" 
+            + "Flesch Index : " + String.format("%.2f", index) + "\n" 
             + "Readability :   " + flesch;
     }
 
     /**
-     * print error from message.
+     * print prompt error from message.
      * @param message error message.
      */
-    public static void error(String message) {
+    public void error(String message) {
         showResult.setPromptText(message);
         showResult.setStyle("-fx-border-color: red;");
+    }
+
+    /**
+     * popup error from message.
+     * @param message error message.
+     */
+    public void PopupError(String message){
+        Alert alert = new Alert(Alert.AlertType.NONE, message, ButtonType.CLOSE);
+        alert.setTitle("Error");
+        alert.show();
     }
     
     /**
      * main method to run program.
      * @param args user input.
      */
-    public static void main(String[] args) {
+    public void main(String[] args) {
         launch(args);
     }
 }
