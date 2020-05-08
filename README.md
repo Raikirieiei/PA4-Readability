@@ -1,9 +1,8 @@
 # Flesch Index Readability 
     By Thornthep Chomchuen
-<<<<<<< HEAD
+    
 # Instruction
     Flesch Index Readability is the application that can read text file from directory and URL
-=======
 
 # Instruction
     Flesch Index Readability is the application that can read text file from directory and URL,
@@ -45,4 +44,4 @@
 <a href="https://www.mx7.com/view2/C7t00UxbojYujKU3" target="_blank"><img border="0" src="https://www.mx7.com/i/291/Lnu1yo.jpeg" /></a>
 
 UML Diagram created by LucidChart.
->>>>>>> 4cde270caba57c4dc1e6a2fcee020e1284d7527a
+
