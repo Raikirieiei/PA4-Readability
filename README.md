@@ -20,7 +20,7 @@
     - You can click clear to clear all calculated result text and file name box text.
     - on the top left "Help" there is "About" menu that will show author name and version.
     
-    [or user can run by command line in terminal.]
+    [Additionally user can run by command line in terminal.]
       First go to your program directory, Then type this
           
               java Readability -link your/file/path
@@ -35,4 +35,9 @@
  
 # How to run JAR
     Open any terminal and then, go to your Jar directory and type,
-          java --module-path your/javafx/lib --add-modules javafx.controls -jar Readability.jar
+          java --module-path your/javafx/lib --add-modules javafx.controls -jar FleschReadability.jar
+          
+# UML Diagram
+<a href="https://www.mx7.com/view2/C7t00UxbojYujKU3" target="_blank"><img border="0" src="https://www.mx7.com/i/291/Lnu1yo.jpeg" /></a>
+
+UML Diagram created by LucidChart.
