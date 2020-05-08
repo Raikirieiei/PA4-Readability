@@ -10,22 +10,30 @@ import java.net.URL;
 public class ReadAndCount {
     //this is the url attribute that use to receive url and read
     private URL url;
-    // this is attribute to receive counted words from file or URL.
+    
+    // these are attribute to count words,syllable and sentences.
     private int countWord;
-    // this is attribute to receive counted syllables from file or URL.
     private int countSyllable;
-    // this is attribute to receive counted sentences from file or URL.
     private int countSentence;
+    
     // this is attribute to receive each line from file or URL.
     private String line;
     // this is attribute to call ui class.
-    private GraphicalUI ui = new GraphicalUI();
+    private GraphicalUI ui;
 
     // these are attribute to use the counting strategy from interface.
 
-    private static CountType countWordStrat = new CountType(new CountWord());
-    private static CountType countSentenceStrat = new CountType(new CountSentence());
-    private static CountType countSyllableStrat = new CountType(new CountSyllable());
+    private CountType countWordStrat;
+    private CountType countSentenceStrat;
+    private CountType countSyllableStrat;
+
+    /**constructor for this class */
+    public ReadAndCount(){
+        ui = new GraphicalUI();
+        countWordStrat = new CountType(new CountWord()); 
+        countSentenceStrat = new CountType(new CountSentence());
+        countSyllableStrat = new CountType(new CountSyllable());
+    }
 
     /**
      * method to read a file or URL and counting, then send information of counting to count attribute.
@@ -42,10 +50,7 @@ public class ReadAndCount {
                     countSyllable += countSyllableStrat.Counting(line);
                     countSentence += countSentenceStrat.Counting(line);
                 }
-            } catch (IOException e) {
-                ui.PopupError("File not found");
-            }
-            
+            } catch (IOException e) {ui.PopupError("File not found");}
         } else {
             File file = new File(source);
             if (!file.exists() || !file.isFile())
@@ -65,7 +70,7 @@ public class ReadAndCount {
     // accessor method for attribute countWord.
     public int getWord() {return this.countWord;}
 
-    // accessor method for attribute countSyl.
+    // accessor method for attribute countSyllable.
     public int getSyllable() {return this.countSyllable;}
 
     // accessor method for attribute countSent.

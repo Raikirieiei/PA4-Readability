@@ -44,9 +44,8 @@ public class CountSyllable implements CountStrategy {
      * @return True if alphabet is vowel and False if alphabet is consonant.
      */
     private boolean IsVowel(String alphabet) {
-        if (alphabet.equalsIgnoreCase("a") || alphabet.equalsIgnoreCase("e") || alphabet.equalsIgnoreCase("i")
-                || alphabet.equalsIgnoreCase("o") || alphabet.equalsIgnoreCase("u")) return true;
-        else return false;
+        return (alphabet.equalsIgnoreCase("a") || alphabet.equalsIgnoreCase("e") || alphabet.equalsIgnoreCase("i")
+        || alphabet.equalsIgnoreCase("o") || alphabet.equalsIgnoreCase("u"));
     }
 
     

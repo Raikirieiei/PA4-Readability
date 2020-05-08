@@ -31,7 +31,7 @@ public class GraphicalUI extends Application {
     // help menu that show author name.
     private MenuItem helpMenu;
     // text area that show result of counting and readability.
-    private static TextArea showResult;
+    private TextArea showResult;
     // browse button to select a file.
     private Button browse;
     // calculate button to counting and calculate readability.
@@ -41,7 +41,12 @@ public class GraphicalUI extends Application {
     // exit button to exit program.
     private Button exit;
     // file chooser for browse button.
-    private FileChooser fileChooser = new FileChooser();
+    private FileChooser fileChooser;
+
+    /** constructor for this class */
+    public GraphicalUI(){
+        fileChooser = new FileChooser();
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -58,7 +63,7 @@ public class GraphicalUI extends Application {
         primaryStage.show();
     }
 
-    // initiate pane1 for top area
+    /** initiate pane1 for top area */
     public FlowPane initiate() {
         FlowPane pane = new FlowPane();
         // set appearance
@@ -86,7 +91,7 @@ public class GraphicalUI extends Application {
         return pane;
     }
 
-    // initiate pane2 for bottom area
+    /** initiate pane2 for bottom area */
     public FlowPane initiate2() {
         FlowPane pane = new FlowPane();
         // set appearance

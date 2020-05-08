@@ -31,17 +31,17 @@ public class CommandLine {
     /**
      * the method to print result in terminal.
      * @param filename file or url from user input.
-     * @param syl counted syllables.
+     * @param syllable counted syllables.
      * @param word counted words.
-     * @param sent counted sentences.
+     * @param sentence counted sentences.
      * @param index calculated flesch readability index.
      * @param flesch result from flesch reability.
      */
-    private void PrintResult(String filename, int syl, int word, int sent, double index, String flesch) {
+    private void PrintResult(String filename, int syllable, int word, int sentence, double index, String flesch) {
         System.out.println("File :           " + filename + "\n" 
-                            + "Syllables :      " + syl + "\n" 
+                            + "Syllables :      " + syllable + "\n" 
                             + "Words :          " + word + "\n"
-                            + "Sentences :      " + sent + "\n" 
+                            + "Sentences :      " + sentence + "\n" 
                             + "Flesch Index :   " + index + "\n" 
                             + "Readability :    " + flesch); 
     }
