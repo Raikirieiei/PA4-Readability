@@ -2,7 +2,7 @@
     By Thornthep Chomchuen
 
 # Instruction
-      Flesch Index Readability is the application that can read text file from directory and URL,
+    Flesch Index Readability is the application that can read text file from directory and URL,
     Then the application will counting the words,syllables and sentences in those text file, After that 
     this application will caculate Flesch Index using this formula.
                         
@@ -28,7 +28,7 @@
       the -link is the command to execute the application and follow by your file path or URL.
 
 # Requirement JAR to run GUI
-      Flesch Index Readability is using UI created by JAVAFX so user will need the JAVAFX Jar to run 
+    Flesch Index Readability is using UI created by JAVAFX so user will need the JAVAFX Jar to run 
     this application with JAVAFX UI.
     Download link : https://gluonhq.com/products/javafx/
     **JAVAFX Product Depend on your OS.**
