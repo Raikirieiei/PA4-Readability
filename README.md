@@ -46,7 +46,7 @@
           java --module-path your/javafx/lib --add-modules javafx.controls -jar FleschReadability.jar
           
 # UML Diagram
-<a href="https://www.mx7.com/view2/C7t00UxbojYujKU3" target="_blank"><img border="0" src="https://www.mx7.com/i/291/Lnu1yo.jpeg" /></a>
+<a href="https://www.mx7.com/view2/C7t6ctx6cTa6wI50" target="_blank"><img border="0" src="https://www.mx7.com/i/142/VGjPMc.jpeg" /></a>
 
 UML Diagram created by LucidChart.
 
