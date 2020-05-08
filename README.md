@@ -12,10 +12,15 @@
                         (206.835 - 84.6*(syllables/words) - 1.015*(words/sentences)); 
     
     Finally the application will calculate readability and show it on the ui text area.
+
+# CSS style sheet
+    user need to put CSS style sheet name "UIStyle" inside the same directory of the program to apply
+    modified color and font for GUI.
           
 # How to use program
     [There is 2 ways to use this program, First one is by running program normally.]
 ![Program](https://s3-ap-southeast-1.amazonaws.com/img-in-th/94a2c332350a4997379748d86561ae4c.png)    
+--This ui using css style sheet to edit color and font.--
 
     - In the top field you can either type URL,File directory or you can browse the file by clicking "Browse".
     - When you click calculate the program will calculate Flesch Readabilty and show it in the box below 
