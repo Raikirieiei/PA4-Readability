@@ -40,10 +40,6 @@
     this application with JAVAFX UI.
     Download link : https://gluonhq.com/products/javafx/
     **JAVAFX Product Depend on your OS.**
- 
-# How to run JAR
-    Open any terminal and then, go to your Jar directory and type,
-          java --module-path your/javafx/lib --add-modules javafx.controls -jar FleschReadability.jar
           
 # UML Diagram
 <a href="https://www.mx7.com/view2/C7t6ctx6cTa6wI50" target="_blank"><img border="0" src="https://www.mx7.com/i/142/VGjPMc.jpeg" /></a>
