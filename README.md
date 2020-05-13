@@ -2,9 +2,6 @@
     By Thornthep Chomchuen
     
 # Instruction
-    Flesch Index Readability is the application that can read text file from directory and URL
-
-# Instruction
     Flesch Index Readability is the application that can read text file from directory and URL,
     Then the application will counting the words,syllables and sentences in those text file, After that 
     this application will caculate Flesch Index using this formula.
